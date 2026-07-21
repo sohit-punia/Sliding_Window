@@ -1,0 +1,15 @@
+    double findMaxAverage(vector<int>& nums, int k) {
+        int n = nums.size();
+        double avg = 0;
+        double maxavg = INT_MIN;
+        int left = 0;
+        for(int right = 0; right < n; right++){
+            avg += nums[right];
+            if(right - left + 1 == k){
+                maxavg = max(maxavg , avg / k);
+                avg -= nums[left];
+                left++;
+            }
+        }
+        return maxavg;
+    }
